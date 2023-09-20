@@ -8,6 +8,7 @@
       "@features/*": ["src/features/*"],
       "@layouts/*": ["src/layouts/*"]
     },
+    "types": ["vitest/globals"],
     "jsx": "react-jsx",
     "jsxImportSource": "react"
   }
