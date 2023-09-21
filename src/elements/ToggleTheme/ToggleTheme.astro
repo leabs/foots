@@ -1,10 +1,13 @@
-<button id='themeToggle'></button>
+<button id='themeToggleBtn'></button>
 
 <script>
-  const buttonEl = document.getElementById('themeToggle')
+  const buttonEl = document.getElementById('themeToggleBtn')
 
-  buttonEl.innerHTML = localStorage.getItem('theme') === 'dark' ? '🌞' : '🌙'
-  buttonEl.addEventListener('click', () => {
+  if (buttonEl) {
+    buttonEl.innerHTML = localStorage.getItem('theme') === 'dark' ? '🌞' : '🌙'
+  }
+
+  buttonEl?.addEventListener('click', () => {
     const currentTheme = localStorage.getItem('theme')
 
     currentTheme === 'dark'

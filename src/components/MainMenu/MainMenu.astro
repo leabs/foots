@@ -1,0 +1,24 @@
+---
+import { Shield } from 'lucide-astro'
+import Logo from '@elements/Logo/Logo.astro'
+import MenuGroup from '@elements/MenuGroup/MenuGroup.astro'
+import MenuItem from '@elements/MenuItem/MenuItem.astro'
+import ToggleTheme from '@elements/ToggleTheme/ToggleTheme.astro'
+---
+
+<nav role='menu'>
+  <ul class='flex justify-between items-center' role='group'>
+    <MenuItem>
+      <Logo size='text-lg' />
+    </MenuItem>
+
+    <MenuGroup>
+      <MenuItem title='Escolha o time'>
+        <Shield role='button' title='Escudo' />
+      </MenuItem>
+      <MenuItem>
+        <ToggleTheme />
+      </MenuItem>
+    </MenuGroup>
+  </ul>
+</nav>
