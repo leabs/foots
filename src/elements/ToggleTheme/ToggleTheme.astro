@@ -1,0 +1,26 @@
+<button id='themeToggle'></button>
+
+<script>
+  const buttonEl = document.getElementById('themeToggle')
+
+  buttonEl.innerHTML = localStorage.getItem('theme') === 'dark' ? '🌞' : '🌙'
+  console.log('ALOHAAAA', localStorage.getItem('theme'))
+  buttonEl.addEventListener('click', () => {
+    const currentTheme = localStorage.getItem('theme')
+    console.log(currentTheme)
+
+    currentTheme === 'dark'
+      ? window.localStorage.setItem('theme', 'light')
+      : window.localStorage.setItem('theme', 'dark')
+    if (currentTheme && currentTheme === 'dark') {
+      document.documentElement.classList.toggle('dark')
+      buttonEl.innerHTML = '🌙' // document.documentElement.classList.add('light')
+    } else {
+      console.log('aloha')
+      // document.documentElement.classList.toggle('light')
+      document.documentElement.classList.add('dark')
+      buttonEl.innerHTML = '🌞'
+    }
+    // buttonEl.innerHTML = currentTheme === 'dark' ? '🌞' : '🌙'
+  })
+</script>
