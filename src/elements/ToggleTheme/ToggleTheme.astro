@@ -1,6 +1,18 @@
-<button id='themeToggleBtn'></button>
+---
+
+---
+
+<button id="btn">Click Me</button>
 
 <script>
+  const buttonEl = document.querySelector('#btn')
+  console.log(buttonEl)
+
+  buttonEl?.addEventListener('click', (e) => console.log(e))
+
+</script>
+
+<!-- <script>
   const buttonEl = document.getElementById('themeToggleBtn')
 
   if (buttonEl) {
@@ -21,4 +33,4 @@
       buttonEl.innerHTML = '🌞'
     }
   })
-</script>
+</script> -->
