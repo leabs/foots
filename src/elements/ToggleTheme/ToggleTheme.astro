@@ -2,35 +2,54 @@
 
 ---
 
-<button id="btn">Click Me</button>
+<button id='btn' transition:persist>Click Me</button>
 
 <script>
-  const buttonEl = document.querySelector('#btn')
-  console.log(buttonEl)
-
-  buttonEl?.addEventListener('click', (e) => console.log(e))
-
-</script>
-
-<!-- <script>
-  const buttonEl = document.getElementById('themeToggleBtn')
-
-  if (buttonEl) {
-    buttonEl.innerHTML = localStorage.getItem('theme') === 'dark' ? '🌞' : '🌙'
+  const buttonEl = document.getElementById('btn')
+  //Checks for localStorage of a theme, if so render the correct class and icon
+  function checkTheme() {
+    const currentTheme = localStorage.getItem('theme')
+    if (currentTheme && currentTheme === 'dark') {
+      document.documentElement.classList.add('dark')
+      buttonEl.innerHTML = '🌞'
+    } else {
+      document.documentElement.classList.remove('dark')
+      buttonEl.innerHTML = '🌙'
+    }
   }
 
+  // Runs the checkTheme function on page load
+  window.addEventListener('load', checkTheme)
+
+  //toggles theme with .btn click event using .dark theme class
   buttonEl?.addEventListener('click', () => {
     const currentTheme = localStorage.getItem('theme')
 
     currentTheme === 'dark'
       ? window.localStorage.setItem('theme', 'light')
       : window.localStorage.setItem('theme', 'dark')
-    if (currentTheme && currentTheme === 'dark') {
-      document.documentElement.classList.toggle('dark')
-      buttonEl.innerHTML = '🌙'
-    } else {
-      document.documentElement.classList.add('dark')
-      buttonEl.innerHTML = '🌞'
-    }
+    checkTheme()
   })
-</script> -->
+
+  //VIEWTRANSITION event listener that enables the checkTheme fuction to run on page transition
+  document.addEventListener('astro:after-swap', checkTheme)
+
+  // if (buttonEl) {
+  //   buttonEl.innerHTML = localStorage.getItem('theme') === 'dark' ? '🌞' : '🌙'
+  // }
+
+  // buttonEl?.addEventListener('click', () => {
+  //   const currentTheme = localStorage.getItem('theme')
+
+  //   currentTheme === 'dark'
+  //     ? window.localStorage.setItem('theme', 'light')
+  //     : window.localStorage.setItem('theme', 'dark')
+  //   if (currentTheme && currentTheme === 'dark') {
+  //     document.documentElement.classList.toggle('dark')
+  //     buttonEl.innerHTML = '🌙'
+  //   } else {
+  //     document.documentElement.classList.add('dark')
+  //     buttonEl.innerHTML = '🌞'
+  //   }
+  // })
+</script>
